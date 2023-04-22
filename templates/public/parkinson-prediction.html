@@ -1,0 +1,185 @@
+{% extends "public/template.html" %}
+
+{% block title %} Health App {% endblock %}
+
+{% block main %} 
+
+<body>
+    <br>
+    <br>
+    <br>
+    <div class="login">
+        <div>
+            <h1><p style="font-weight: bold;">Parkinson Prediction Module</p> </h1>
+        </div>
+   
+       <form action="{{ url_for('predict_parkinson_datapoint')}}" method="post">
+        <h1>
+            <legend>Data form</legend>
+        </h1>
+        
+
+        <div class="mb-3">
+            <label class="form-label">MDVP:Fo(Hz)</label>
+            <input class="form-control" type="number" name="fo"
+                placeholder="Enter your MDVP:Fo(Hz)" min='-10' max='600' step='0.000001' />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">MDVP:Fhi(Hz)</label>
+            <input class="form-control" type="number" name="fhi"
+                placeholder="Enter your MDVP:Fhi(Hz) level" min='-10' max='600' step='0.000001' />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">MDVP:Flo(Hz)</label>
+            <input class="form-control" type="number" name="flo"
+                placeholder="Enter your MDVP:Flo(Hz) level" min='-10' max='600' step='0.000001' />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">MDVP:Jitter(%)</label>
+            <input class="form-control" type="number" name="jitter_percentage"
+                placeholder="Enter your MDVP:Jitter(%) level" min='-10' max='600' step='0.000001' />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">MDVP:Jitter(Abs)</label>
+            <input class="form-control" type="number" name="jitter_abs"
+                placeholder="Enter your MDVP:Jitter(Abs) level" min='-10' max='600' step='0.000001' />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">MDVP:RAP level</label>
+            <input class="form-control" type="number" name="rap"
+                placeholder="Enter your MDVP:RAP level" min='-10' max='600' step='0.000001' />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">MDVP:PPQ level</label>
+            <input class="form-control" type="number" name="ppq"
+                placeholder="Enter your MDVP:PPQ level" min='-10' max='600' step='0.000001' />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">Jitter:DDP Value</label>
+            <input class="form-control" type="number" name="ddp"
+                placeholder="Enter your Jitter:DDP Value" min='-10' max='600' step='0.000001' />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">MDVP:Shimmer level</label>
+            <input class="form-control" type="number" name="shimmer"
+                placeholder="Enter your MDVP:Shimmer level" min='-10' max='600' step='0.000001' />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">MDVP:Shimmer(dB) Value</label>
+            <input class="form-control" type="number" name="shimmer_db"
+                placeholder="Enter your MDVP:Shimmer(dB) Value" min='-10' max='600' step='0.000001' />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Shimmer:APQ3 level</label>
+            <input class="form-control" type="number" name="shimmer_apq3"
+                placeholder="Enter your Shimmer:APQ3 level" min='-10' max='600' step='0.000001' />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">Shimmer:APQ5 level</label>
+            <input class="form-control" type="number" name="shimmer_apq5"
+                placeholder="Enter your Shimmer:APQ5 level" min='-10' max='600' step='0.000001' />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">MDVP:APQ level</label>
+            <input class="form-control" type="number" name="mdvp"
+                placeholder="Enter your MDVP:APQ level" min='-10' max='600' step='0.000001' />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Shimmer:DDA level</label>
+            <input class="form-control" type="number" name="shimmer_dda"
+                placeholder="Enter your Shimmer:DDA level" min='-10' max='600' step='0.000001' />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">NHR level</label>
+            <input class="form-control" type="number" name="nhr"
+                placeholder="Enter your NHR level" min='-10' max='600' step='0.000001' />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">HNR level</label>
+            <input class="form-control" type="number" name="hnr"
+                placeholder="Enter your HNR level" min='-10' max='600' step='0.000001' />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">RPDE level</label>
+            <input class="form-control" type="number" name="rpde"
+                placeholder="Enter your RPDE level" min='-10' max='600' step='0.000001' />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">DFA level</label>
+            <input class="form-control" type="number" name="dfa"
+                placeholder="Enter your DFA level" min='-10' max='600' step='0.000001' />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">Spread1 level</label>
+            <input class="form-control" type="number" name="spread_one"
+                placeholder="Enter your Spread1 level" min='-10' max='600' step='0.000001' />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">Spread2 level</label>
+            <input class="form-control" type="number" name="spread_two"
+                placeholder="Enter your Spread2 level" min='-10' max='600' step='0.000001' />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">D2 Value</label>
+            <input class="form-control" type="number" name="d2"
+                placeholder="Enter your D2 Value" min='-10' max='600' step='0.000001' />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">PPE Value</label>
+            <input class="form-control" type="number" name="ppe"
+                placeholder="Enter your PPE Value" min='-10' max='600' step='0.000001' />
+        </div>
+
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Submit values" required />
+        </div>
+        
+    
+    </form>
+    <h2>
+        {% if results == 0: %}
+            <p>The patient does not have Parkinson Disease</p>
+        {% elif results == 1 %}
+            <p>The patient has Parkinson Disease</p>
+        {% endif %}
+    </h2>
+    
+   <body>
+
+{% endblock %}

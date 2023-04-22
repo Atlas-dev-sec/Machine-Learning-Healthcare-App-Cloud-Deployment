@@ -1,0 +1,91 @@
+{% extends "public/template.html" %}
+
+{% block title %} Health App {% endblock %}
+
+{% block main %} 
+<body>
+    <br>
+    <br>
+    <br>
+        
+    <div class="login">
+        
+        <div>
+            <h1><p style="font-weight: bold;">Diabetes Prediction Module</p> </h1>
+        </div>
+       
+   
+       <form action="{{ url_for('predict_datapoint')}}" method="post">
+        <h1>
+            <legend>Data form</legend>
+        </h1>
+        
+        <div class="mb-3">
+            <label class="form-label">Number of pregnancies</label>
+            <input class="form-control" type="number" name="pregnancies"
+                placeholder="Enter your number of pregnancies" min='0' max='20' />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Glucose level</label>
+            <input class="form-control" type="number" name="glucose"
+                placeholder="Enter your glucose level" min='0' max='250' step='0.000001' />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Blood pressure value</label>
+            <input class="form-control" type="number" name="bloodpressure"
+                placeholder="Enter your blood pressure value" min='0' max='200'  step='0.000001'/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Skin thickness value</label>
+            <input class="form-control" type="number" name="skinthickness"
+                placeholder="Enter your Skin thickness value" min='0' max='100' step='0.000001'/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Insulin value</label>
+            <input class="form-control" type="number" name="insulin"
+                placeholder="Enter your number insulin value" min='0' max='999' step='0.000001'/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Body Mass Index value (BMI)</label>
+            <input class="form-control" type="number" name="bmi"
+                placeholder="Enter your BMI" min='0' max='100' step='0.000001'/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Diabetes Pedigree Function</label>
+            <input class="form-control" type="number" name="diabetespedigreefunction"
+                placeholder="Enter your Diabetes Pedigree Function" min='0' max='10' step='0.000001'/>
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">Age value</label>
+            <input class="form-control" type="number" name="age"
+                placeholder="Enter your Age" min='0' max='100'/>
+        </div>
+
+        
+
+
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Submit values" required />
+        </div>
+        
+    
+    </form>
+    <h2>
+        {% if results == 0: %}
+            <p>The patient does not have Diabetes</p>
+        {% elif results == 1 %}
+            <p>The patient is Diabetic</p>
+        {% endif %}
+    </h2>
+    
+   <body>
+
+{% endblock%}

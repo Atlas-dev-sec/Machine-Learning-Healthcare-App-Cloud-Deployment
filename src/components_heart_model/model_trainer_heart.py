@@ -2,7 +2,7 @@ import os
 import sys
 
 from dataclasses import dataclass
-from sklearn.svm import SVC
+from sklearn.linear_model import LogisticRegression 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import (
     AdaBoostClassifier,
@@ -19,13 +19,13 @@ from src.utils import save_object
 from src.utils import evaluate_models
 
 @dataclass
-class ModelTrainerConfig:
-    trained_model_file_path=os.path.join("artifact", "model.pkl")
+class HeartModelTrainerConfig:
+    trained_model_file_path=os.path.join("heart_artifact", "model.pkl")
 
 
-class ModelTrainer:
+class HeartModelTrainer:
     def __init__(self):
-        self.model_trainer_config=ModelTrainerConfig()
+        self.model_trainer_config=HeartModelTrainerConfig()
 
     def initiate_model_trainer(self, train_array, test_array):
         try:
@@ -38,7 +38,7 @@ class ModelTrainer:
             )
 
             models= {
-                "Support Vector Machine": SVC(),
+                "Logistic Regression": LogisticRegression(),
                 "Random Forest": RandomForestClassifier(),
                 "Decision Tree": DecisionTreeClassifier(),
                 "Gradient Boosting": GradientBoostingClassifier(),
@@ -46,8 +46,8 @@ class ModelTrainer:
             }
             
             params = {
-                "Support Vector Machine": {
-                    'shrinking':[True, False]
+                "Logistic Regression": {
+                    'fit_intercept':[True, False]
                 },
                 "Decision Tree":{
                     'criterion':['gini', 'entropy', 'log_loss'],
@@ -82,6 +82,7 @@ class ModelTrainer:
             
             #logging.info("The best model was: {}", best_model)
             best_model = models[best_model_name]
+            print(best_model)
 
             if best_model_score < 0.6:
                 raise CustomException("No best model found")

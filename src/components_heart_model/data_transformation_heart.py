@@ -16,13 +16,13 @@ from src.logger import logging
 from src.utils import save_object
 
 @dataclass
-class DataTransformationConfig:
-    preprocessor_obj_file_path = os.path.join('artifact', "preprocessor.pkl")
+class HeartDataTransformationConfig:
+    preprocessor_obj_file_path = os.path.join('heart_artifact', "preprocessor.pkl")
 
 
-class DataTransformation:
+class HeartDataTransformation:
     def __init__(self):
-        self.data_transformation_config= DataTransformationConfig()
+        self.data_transformation_config= HeartDataTransformationConfig()
 
     def get_data_transformer_object(self):
         '''
@@ -30,15 +30,14 @@ class DataTransformation:
         
         '''
         try:
-            numerical_columns = ["Pregnancies","Glucose","BloodPressure","SkinThickness",
-                                 "Insulin",	"BMI"	,"DiabetesPedigreeFunction","Age"]
+            numerical_columns = ["age","sex","trestbps","chol",
+                                 "fbs",	"restecg"	,"thalach","exang", 
+                                 "oldpeak","slope", "ca","thal"]
             
 
             num_pipeline= Pipeline(
                 steps=[
                 ("imputer",SimpleImputer(strategy="median")),
-                ("scaler",StandardScaler())
-
                 ]
             )
             logging.info(f"Numerical columns: {numerical_columns}")
@@ -62,7 +61,7 @@ class DataTransformation:
 
             logging.info("Obtaining preprocessing object")
             preprocessing_obj= self.get_data_transformer_object()
-            target_column_name = 'Outcome'
+            target_column_name = 'target'
 
             input_feature_train_df = train_df.drop(columns=[target_column_name], axis=1)
             target_feature_train_df = train_df[target_column_name]

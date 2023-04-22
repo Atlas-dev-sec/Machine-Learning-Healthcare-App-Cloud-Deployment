@@ -1,0 +1,66 @@
+{% extends "public/template.html" %}
+
+{% block title %} Health App {% endblock %}
+
+{% block main %} 
+
+
+<!-- Header -->
+  <header class="w3-container w3-red w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo">Healthcare Disease Prediction</h1>
+    <p class="w3-xlarge">Machine Learning Application</p>
+    <a href="/predictdiabetes" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</a> 
+  </header>
+
+  <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+    <h1 class="w3-margin w3-xlarge">The Healthcare Disease Prediction Application uses Machine Learning models to predict the likelihood of developing diabetes, Parkinson's disease, and heart disease. The application takes into account a variety of data sources to make accurate predictions.</h1>
+</div>
+
+  <!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+    <div class="w3-content">
+      <div class="w3-twothird">
+        <h1>Diabetes Prediction Module</h1>
+        <h5 class="w3-padding-32">This module predicts the likelihood of developing diabetes using data such as age, BMI, blood pressure, and glucose levels. The model uses algorithms such as decision trees, logistic regression, and support vector machines to analyze the data and predict the probability of diabetes occurrence.</h5>
+      </div>
+  
+      <div class="w3-third w3-center">
+        <i class="fa fa-stethoscope fa-5x w3-padding-64 w3-text-red"></i>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Second Grid -->
+  <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+    <div class="w3-content">
+      <div class="w3-third w3-center">
+        <i class="fa fa-heartbeat fa-5x w3-padding-64 w3-text-red w3-margin-right"></i>
+      </div>
+  
+      <div class="w3-twothird">
+        <h1>Heart Disease Module</h1>
+        <h5 class="w3-padding-32">This module predicts the likelihood of developing heart disease using data such as age, gender, cholesterol levels, and blood pressure. The model uses algorithms such as random forests, neural networks, and support vector machines to analyze the data and predict the probability of heart disease occurrence.</h5>
+      </div>
+    </div>
+  </div>
+
+  <!-- THIRD Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+    <div class="w3-content">
+      <div class="w3-twothird">
+        <h1>Parkinson's Disease Module</h1>
+        <h5 class="w3-padding-32">This module uses a combination of speech and movement data to predict the likelihood of developing Parkinson's disease. The model analyzes the data and detects patterns that indicate the presence of the disease. The algorithm used in this module is the convolutional neural network, which is known for its ability to detect complex patterns in data.</h5>
+
+      </div>
+  
+      <div class="w3-third w3-center">
+        <i class="fa fa-medkit fa-5x w3-padding-64 w3-text-red"></i>
+      </div>
+    </div>
+  </div>
+  
+  <div class="w3-container w3-black w3-center w3-opacity w3-padding-32">
+      <h1 class="w3-margin w3-xlarge">Time and health are two precious assets that we don't recognize and appreciate until they have been depleted</h1>
+  </div>
+
+{% endblock%}

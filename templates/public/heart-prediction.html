@@ -1,0 +1,122 @@
+{% extends "public/template.html" %}
+
+{% block title %} Health App {% endblock %}
+
+{% block main %} 
+<body>
+    <br>
+    <br>
+    <br>
+    <div class="login">
+        <div>
+            <h1><p style="font-weight: bold;">Heart Disease Prediction Module</p> </h1>
+        </div>
+   
+       <form action="{{ url_for('predict_heart_datapoint')}}" method="post">
+        <h1>
+            <legend>Data form</legend>
+        </h1>
+        
+        <div class="mb-3">
+            <label class="form-label">Age value</label>
+            <input class="form-control" type="number" name="age"
+                placeholder="Enter your Age" min='0' max='100'/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Sex</label>
+            <input class="form-control" type="number" name="sex"
+                placeholder="Sex" min='0' max='1'/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Chest Pain Types</label>
+            <input class="form-control" type="number" name="cp"
+                placeholder="Chest Pain Types"/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Resting Blood Pressure</label>
+            <input class="form-control" type="number" name="trestbps"
+                placeholder="Enter your Resting Blood Pressure" min='0' max='200'/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Serum Cholestoral in mg/dl</label>
+            <input class="form-control" type="number" name="chol"
+                placeholder="Serum Cholestoral in mg/dl" min='0' max='500'/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Fasting Blood Sugar > 120 mg/dl</label>
+            <input class="form-control" type="number" name="fbs"
+                placeholder="Fasting Blood Sugar > 120 mg/dl" min='0' max='1'/>
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">Resting Electrocardiographic results</label>
+            <input class="form-control" type="number" name="restecg"
+                placeholder="Resting Electrocardiographic results" min='0' max='100'/>
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">Maximum Heart Rate achieved</label>
+            <input class="form-control" type="number" name="thalach"
+                placeholder="Maximum Heart Rate achieved" min='0' max='500'/>
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">Exercise Induced Angina</label>
+            <input class="form-control" type="number" name="exang"
+                placeholder="Exercise Induced Angina" min='0' max='1'/>
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">ST depression induced by exercise</label>
+            <input class="form-control" type="number" name="oldpeak"
+                placeholder="ST depression induced by exercise" min='0' max='100' step="0.001"/>
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">Slope of the peak exercise ST segment</label>
+            <input class="form-control" type="number" name="slope"
+                placeholder="Slope of the peak exercise ST segment" min='0' max='100' />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">Major vessels colored by flourosopy</label>
+            <input class="form-control" type="number" name="ca"
+                placeholder="Major vessels colored by flourosopy" min='0' max='100'/>
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">thal: 0 = normal; 1 = fixed defect; 2 = reversable defect</label>
+            <input class="form-control" type="number" name="thal"
+                placeholder="thal: 0 = normal; 1 = fixed defect; 2 = reversable defect" min='0' max='100'/>
+        </div>
+
+        
+
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Submit values" required />
+        </div>
+        
+    
+    </form>
+    <h2>
+        {% if results == 0: %}
+            <p>The patient does not have an Heart Disease</p>
+        {% elif results == 1 %}
+            <p>The patient has an Heart Disease</p>
+        {% endif %}
+    </h2>
+    
+   <body>
+{% endblock %}

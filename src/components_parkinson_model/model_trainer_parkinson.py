@@ -2,7 +2,7 @@ import os
 import sys
 
 from dataclasses import dataclass
-from sklearn.svm import SVC
+from sklearn.svm import SVC 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import (
     AdaBoostClassifier,
@@ -19,13 +19,13 @@ from src.utils import save_object
 from src.utils import evaluate_models
 
 @dataclass
-class ModelTrainerConfig:
-    trained_model_file_path=os.path.join("artifact", "model.pkl")
+class ParkinsonModelTrainerConfig:
+    trained_model_file_path=os.path.join("parkinson_artifact", "model.pkl")
 
 
-class ModelTrainer:
+class ParkinsonModelTrainer:
     def __init__(self):
-        self.model_trainer_config=ModelTrainerConfig()
+        self.model_trainer_config=ParkinsonModelTrainerConfig()
 
     def initiate_model_trainer(self, train_array, test_array):
         try:
@@ -82,6 +82,7 @@ class ModelTrainer:
             
             #logging.info("The best model was: {}", best_model)
             best_model = models[best_model_name]
+            print(best_model)
 
             if best_model_score < 0.6:
                 raise CustomException("No best model found")
